@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Signup Form" class="slds-card">
+        <div class="slds-form slds-m-around_large">
+            <div class="slds-form__row">
+                <div class="slds-form-element slds-m-around_small">
+                    <lightning-input label="First Name" value={firstName} onchange={firstNamefunc}></lightning-input>
+                </div>
+                <div class="slds-form-element slds-m-around_small">
+                    <lightning-input label="Last Name" value={lastName} onchange={lastNamefunc} required></lightning-input>
+                </div>
+                <div class="slds-form-element slds-m-around_small">
+                    <lightning-input label="Email" value={email} onchange={emailfunc} required></lightning-input>
+                    <div class="error">{emailError}</div>
+                </div>
+                <div class="slds-form-element slds-m-around_small">
+                    <lightning-input label="Password" type="password" value={pass1} onchange={passfunc1} required></lightning-input>
+                </div>
+                <div class="slds-form-element slds-m-around_small">
+                    <lightning-input label="Confirm Password" type="password" value={pass2} onchange={passfunc2} required></lightning-input>
+                </div>
+            </div>
+
+            <template for:each={children} for:item="child">
+                <c-child-signup key={child.key} childkey={child.key} oninputchange={handleChildInputChange}></c-child-signup>
+            </template>
+
+            
+            <div class="slds-form__row">
+                <div class="slds-form-element slds-m-around_small">
+                    <lightning-button label="Add row" variant="brand" title="Add Child" onclick={handleAddChild}></lightning-button>
+                </div>
+                <div class="slds-form-element slds-m-around_small">
+                    <lightning-button label="Submit" variant="success" onclick={insertContactAction}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

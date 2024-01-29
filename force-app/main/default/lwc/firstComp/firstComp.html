@@ -1,0 +1,67 @@
+<template>
+    <div style="background-color: rgb(223, 245, 207);">
+        <p style="color: aqua;">Hello Worlds</p>
+        <p style="color: blueviolet;">this is new line</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>gender</th>
+                    <th>contact</th>
+                    <th>Availability</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={persons} for:item="person">
+                    <tr key={person}>
+                        <td>{person.id}</td>
+                        <td>{person.name}</td>
+                        <td>{person.email}</td>
+                        <td>{person.gender}</td>
+                        <td>{person.contact}</td>
+                        <template lwc:if={person.isActive}>
+                            <td style="color: rgb(30, 16, 227);"><strong>Active</strong></td>
+                        </template>
+                        <template lwc:else>
+                            <td style="color: red;"><strong>Inactive</strong></td>
+                        </template>
+                    </tr>
+
+                </template>
+                
+            </tbody>
+        </table>
+        <template for:each={arr} for:item="i">
+            <p key={i}>{i}</p>
+        </template>
+
+        <template lwc:if={big}>
+            <p>a is big</p>
+        </template>
+        <template lwc:else>
+            <p>b is big</p>
+        </template>
+
+        
+        
+    </div>
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}>
+        </lightning-datatable>
+    </div>
+
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={data2}
+                columns={columns2}>
+        </lightning-datatable>
+    </div>
+
+</template>

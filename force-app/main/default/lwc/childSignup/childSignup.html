@@ -1,0 +1,25 @@
+<template>
+    <template if:false={isRemove}>
+        <div class="slds-form__row">
+            <div class="slds-form-element slds-m-around_small">
+                <lightning-input label="First Name" value={firstName} onchange={handleInputChange}></lightning-input>
+            </div>
+            <div class="slds-form-element slds-m-around_small">
+                <lightning-input label="Last Name" value={lastName} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-form-element slds-m-around_small">
+                <lightning-input label="Email" value={email} onchange={handleInputChange} required></lightning-input>
+                <div class="error">{emailError}</div>
+            </div>
+            <div class="slds-form-element slds-m-around_small">
+                <lightning-input label="Password" type="password" value={pass1} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-form-element slds-m-around_small">
+                <lightning-input label="Confirm Password" type="password" value={pass2} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-form-element slds-m-around_small slds-p-top_large">
+                <lightning-button label="-" variant="destructive" title="Remove Child" onclick={handleRemoveChild}></lightning-button>
+            </div>
+        </div>
+    </template>
+</template>

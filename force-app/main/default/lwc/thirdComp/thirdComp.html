@@ -1,0 +1,43 @@
+<template>
+    <lightning-datatable
+        data={data}
+        columns={columns}
+        key-field="Id"
+        onrowselection={getSelectedName}
+    >
+    </lightning-datatable>
+
+    <lightning-datatable
+        data={data}
+        columns={columns}
+        key-field="Id"
+        onrowselection={getSelectedEmail}
+    >
+    </lightning-datatable>
+
+    <lightning-record-form
+    object-api-name="accountObject"
+    fields={myFields}
+    onsuccess={handleAccountCreated}
+  >
+  </lightning-record-form>
+
+
+    <lightning-card>
+
+        <div class="slds-grid slds-wrap">
+            
+
+            <div class="slds-form-element">
+                <lightning-input label="Text" value="" onchange={contactChangeVal} ></lightning-input>
+                </div>
+
+
+            <div class="slds-form-element slds-p-top_large ">
+                <lightning-button label="Create Contact Record" variant="brand" onclick={insertContactAction}></lightning-button>
+            </div>
+
+        </div>
+    </lightning-card>
+    
+</template>
