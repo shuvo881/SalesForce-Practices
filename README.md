@@ -672,6 +672,6 @@ here i scheduled LeadProcessor class by LeadProcessorScheduler. LeadProcessorSch
 
     //EXICUTED schedule:
     LeadProcessorScheduler lp = new LeadProcessorScheduler();
-    String sch = '20 30 8 10 2 ?';
+    String sch = '20 30 8 10 2 ? 2024';
     String jobID = System.schedule('Merge Job', sch, lp);
 ```
