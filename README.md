@@ -600,3 +600,57 @@ Here handleRemoveChild function is a handler that handles which child is showing
     Messaging.sendEmail(mailList);
     } 
 ```
+
+## Batch Job Creating and Testing:
+### Batch Job creating:
+Batch job have 3 main function. there are start, execute, finish function.
+Here start function work initially which work are complated in a batch job.
+execute funcation work on hoich work is exicuted at a bach.
+finish function work when a batch is complated.
+
+```apex
+    public class LeadProcessor implements Database.Batchable<sObject>, Database.Stateful{
+        public Integer recordsProcessed = 0;
+        public Database.QueryLocator  start(Database.BatchableContext bc){
+            return Database.getQueryLocator(
+                [SELECT Id, Name FROM Lead]
+            );
+        }
+        public void execute(Database.BatchableContext bc, List<Lead> Leads){
+            for (Lead l: Leads){
+                l.LeadSource = 'Dreamforce';
+                recordsProcessed = recordsProcessed + 1;
+            }
+            update Leads;
+        }
+        public void finish(Database.BatchableContext bc){
+            System.debug('Number of Passed recoders ' + recordsProcessed);
+        }
+    }
+```
+
+### Batch Job testing:
+```apex
+    @isTest
+    public class LeadProcessorTest {
+        @testSetup
+        static void setup() {
+            List<Lead> Leads = new List<Lead>();
+            // insert 200 Lead
+            for (Integer i=0;i<200;i++) {
+                Leads.add(new Lead(LastName='Test Name '+i, Company='USA'));
+            }
+            insert Leads;
+        }
+        
+        @isTest 
+        static void testBatchClass() {
+            Test.startTest();
+            LeadProcessor ldps = new LeadProcessor();
+            Id batchId = Database.executeBatch(ldps, 200);
+            Test.stopTest();
+            // after the testing stops, assert records were updated properly
+            System.assertEquals(200, [select count() from Lead where LeadSource  = 'Dreamforce']);
+        }
+    }
+```
