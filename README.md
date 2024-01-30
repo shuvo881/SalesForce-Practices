@@ -566,9 +566,9 @@ Here handleRemoveChild function is a handler that handles which child is showing
 
 # 30. 01. 2024
 
-## Send email usnig Template:
-
-1st of all creating a template in org, which name is working. then I used it at trigger by setTemplateID() and setTargetObjectId(). 
+## Send email using Template:
+1st of all creating a template in org, which name is working. then I used it to trigger by setTemplateID() and setTargetObjectId().
+ 
 
 ```apex
     trigger CaseTrigger on Case (after insert) {
@@ -603,10 +603,7 @@ Here handleRemoveChild function is a handler that handles which child is showing
 
 ## Batch Job Creating and Testing:
 ### Batch Job creating:
-Batch job have 3 main function. there are start, execute, finish function.
-Here start function work initially which work are complated in a batch job.
-execute funcation work on hoich work is exicuted at a bach.
-finish function work when a batch is complated.
+Batch job have 3 main function. there are start, execute, finish function. Here start function work initially which work are completed in a batch job. execute function work on which work is executed at a bach. finish function work when a batch is completed.
 
 ```apex
     public class LeadProcessor implements Database.Batchable<sObject>, Database.Stateful{
@@ -661,9 +658,9 @@ finish function work when a batch is complated.
 ```
 
 
-## Batch job schudle Technique
+## Batch job scheduled Technique
+here i scheduled LeadProcessor class by LeadProcessorScheduler. LeadProcessorScheduler class must have a void execute function which work at scheduled time.
 
-here i scheduled LeadProcessor class by LeadProcessorScheduler. LeadProcessorScheduler class must have a void execute function whitch work at schdule time. 
 
 ```apex
     public class LeadProcessorScheduler implements Schedulable{
