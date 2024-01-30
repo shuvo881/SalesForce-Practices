@@ -627,6 +627,11 @@ finish function work when a batch is complated.
             System.debug('Number of Passed recoders ' + recordsProcessed);
         }
     }
+
+    // execute the batch 
+    LeadProcessor myBatchObject = new LeadProcessor();
+    // here set 1k job
+    Id batchId = Database.executeBatch(myBatchObject, 1000);
 ```
 
 ### Batch Job testing:
@@ -653,4 +658,23 @@ finish function work when a batch is complated.
             System.assertEquals(200, [select count() from Lead where LeadSource  = 'Dreamforce']);
         }
     }
+```
+
+
+## Batch job schudle Technique
+
+here i scheduled LeadProcessor class by LeadProcessorScheduler. LeadProcessorScheduler class must have a void execute function whitch work at schdule time. 
+
+```apex
+    public class LeadProcessorScheduler implements Schedulable{
+        public void execute(SchedulableContext SC) {
+            LeadProcessor lp = new LeadProcessor(); 
+            Database.executeBatch(lp);
+        }
+    }
+
+    //EXICUTED schedule:
+    LeadProcessorScheduler lp = new LeadProcessorScheduler();
+    String sch = '20 30 8 10 2 ?';
+    String jobID = System.schedule('Merge Job', sch, lp);
 ```
