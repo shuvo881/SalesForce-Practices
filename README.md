@@ -561,3 +561,42 @@ Here handleRemoveChild function is a handler that handles which child is showing
 ## Output:
 
 ![Screenshot (1)](https://github.com/shuvo881/SalesForce-Practices/assets/68312838/a8c472e1-4efb-446d-a996-a17ad49f3671)
+
+
+
+# 30. 01. 2024
+
+## Send email usnig Template:
+
+1st of all creating a template in org, which name is working. then I used it at trigger by setTemplateID() and setTargetObjectId(). 
+
+```apex
+    trigger CaseTrigger on Case (after insert) {
+    
+        List<Messaging.SingleEmailMessage> mailList =  new List<Messaging.SingleEmailMessage>();
+        for (Case cs : Trigger.new) {
+            if (cs.Status == 'Working'){
+                if (cs.ContactEmail != null) {
+                    EmailTemplate et = [SELECT Id, Subject, Body FROM EmailTemplate WHERE Name = 'working'];
+                    // initialize the single send email id object
+                    Messaging.SingleEmailMessage newMail = new Messaging.SingleEmailMessage();
+                    List<String> sendToAddressesList = new List<String>();
+            
+                    sendToAddressesList.add(cs.ContactEmail);
+            
+                    newMail.setToAddresses(sendToAddressesList);
+                    newMail.setTemplateId(et.Id);
+                    newMail.setTargetObjectId(cs.ContactId);
+            
+                    // Add the email to the list
+                mailList.add(newMail);
+                System.debug('Email sended');
+                }
+            }else {
+                System.debug('No Email sended');
+            }
+        }
+    // Send all emails in the list
+    Messaging.sendEmail(mailList);
+    } 
+```

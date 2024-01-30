@@ -149,9 +149,5 @@ export default class Signup extends LightningElement {
             console.log('email checking error', err)
         });
     }
-
-    handleRemovedChild(){
-        console.log('clicked me');
-    }
     
 }
