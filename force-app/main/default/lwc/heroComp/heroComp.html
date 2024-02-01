@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-hero-container">
+        <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_medium">
+            <div class="slds-col slds-size_1-of-2">
+                <div class="slds-slider-container">
+                    <div class="slds-slider" style="transform: translateX(-{{slideIndex}}00%)">
+                        <div class="slds-slide" for:each={images} for:item="image" key={image.id}>
+                            <img src={image.src} alt={image.alt} class="slds-image" />
+                        </div>
+                    </div>
+                    <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-small slds-button_icon-container slds-button_icon-container-inverse slds-float_left" onclick={prevSlide}>
+                        <lightning-icon icon-name="utility:chevronleft" alternative-text="Previous" size="small"></lightning-icon>
+                    </button>
+                    <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-small slds-button_icon-container slds-button_icon-container-inverse slds-float_right" onclick={nextSlide}>
+                        <lightning-icon icon-name="utility:chevronright" alternative-text="Next" size="small"></lightning-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div class="slds-text-align_center">
+                    <h1 class="slds-text-heading_large">Welcome to Our Community</h1>
+                    <p class="slds-text-body_regular">Connecting People, Sharing Ideas, Building Relationships</p>
+                    <button class="slds-button slds-button_brand" onclick={exploreCommunity}>Explore Community</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

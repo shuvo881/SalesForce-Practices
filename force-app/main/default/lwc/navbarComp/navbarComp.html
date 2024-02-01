@@ -1,0 +1,97 @@
+<template>
+    <div class="slds-context-bar">
+        <div class="slds-context-bar__primary">
+            <div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
+                <div class="slds-context-bar__icon-action">
+                    <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="App Lanucher">
+                        <span class="slds-icon-waffle">
+                            <span class="slds-r1"></span>
+                            <span class="slds-r2"></span>
+                            <span class="slds-r3"></span>
+                            <span class="slds-r4"></span>
+                            <span class="slds-r5"></span>
+                            <span class="slds-r6"></span>
+                            <span class="slds-r7"></span>
+                            <span class="slds-r8"></span>
+                            <span class="slds-r9"></span>
+                        </span>
+                        <span class="slds-assistive-text">Open App Launcher</span>
+                    </button>
+                </div>
+                <span class="slds-context-bar__label-action slds-context-bar__app-name">
+                    <span class="slds-truncate" title="TFS LTD">TwinForce Solutions</span>
+                </span>
+            </div>
+        </div>
+        <nav class="slds-context-bar__secondary" role="navigation">
+            <ul class="slds-grid">
+                <li class="slds-context-bar__item slds-is-active">
+                    <a href="#" class="slds-context-bar__label-action" title="Home">
+                        <span class="slds-assistive-text">Current Page:</span>
+                        <span class="slds-truncate" title="Home">Home</span>
+                    </a>
+                </li>
+                <li class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click">
+                    <a href="#" class="slds-context-bar__label-action" title="Product Cetagoreis">
+                        <span class="slds-truncate" title="Product Cetagoreis">Product Cetagoreis</span>
+                    </a>
+                    <div class="slds-context-bar__icon-action slds-p-left_none">
+                        <button class="slds-button slds-button_icon slds-button_icon slds-context-bar__button" aria-haspopup="true" title="All cetagory">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+                            </svg>
+                            <span class="slds-assistive-text">All category</span>
+                        </button>
+                    </div>
+                    <div class="slds-dropdown slds-dropdown_right">
+                        <ul class="slds-dropdown__list" role="menu">
+                            <li class="slds-dropdown__item" role="presentation">
+                                <a href="#" role="menuitem" tabindex="-1">
+                                    <span class="slds-truncate" title="New Category">
+                                        <svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-m-right_x-small" aria-hidden="true">
+                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+                                        </svg>
+                                        New Category
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="slds-dropdown__header slds-has-divider_top-space" role="separator">
+                                <span>All Categories</span>
+                            </li>
+                            <li class="slds-dropdown__item" role="presentation">
+                                <a href="#" role="menuitem" tabindex="-1">
+                                    <span class="slds-truncate" title="Men">Men</span>
+                                </a>
+                            </li>
+                            <li class="slds-dropdown__item" role="presentation">
+                                <a href="#" role="menuitem" tabindex="-1">
+                                    <span class="slds-truncate" title="Women">Women</span>
+                                </a>
+                            </li>
+                            <li class="slds-dropdown__item" role="presentation">
+                                <a href="#" role="menuitem" tabindex="-1">
+                                    <span class="slds-truncate" title="Kits">Kits</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="slds-context-bar__item">
+                    <a href="#" class="slds-context-bar__label-action" title="Review">
+                        <span class="slds-truncate" title="Review">Review</span>
+                    </a>
+                </li>
+                <li class="slds-context-bar__item">
+                    <a href="#" class="slds-context-bar__label-action" title="About us">
+                        <span class="slds-truncate" title="About us">About us</span>
+                    </a>
+                </li>
+                <li class="slds-context-bar__item">
+                    <a href="#" class="slds-context-bar__label-action" title="Contact us">
+                        <span class="slds-truncate" title="Contact us">Contact us</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</template>
